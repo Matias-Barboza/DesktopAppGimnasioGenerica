@@ -7,12 +7,12 @@ namespace DesktopAppGimnasio.Presenters
     public class MainPresenter
     {
         private IMainView mainView;
-        private readonly string mySqlConnectionString;
+        private readonly string SqlConnectionString;
 
-        public MainPresenter(IMainView mainView, string mySqlConnectionString)
+        public MainPresenter(IMainView mainView, string SqlConnectionString)
         {
             this.mainView = mainView;
-            this.mySqlConnectionString = mySqlConnectionString;
+            this.SqlConnectionString = SqlConnectionString;
             //this.mainView.ShowPresentationView += ShowPresentationView;
             this.mainView.ShowSociosView += ShowSociosView;
             this.mainView.ShowCuotasView += ShowCuotasView;
@@ -29,24 +29,24 @@ namespace DesktopAppGimnasio.Presenters
         private void ShowSociosView(object? sender, EventArgs e)
         {
             ISocioView socioView = SocioView.GetInstance((Form) mainView);
-            ISocioRepository socioRepository = new SocioRepository(mySqlConnectionString);
-            ICuotaRepository cuotaRepository = new CuotaRepository(mySqlConnectionString);
+            ISocioRepository socioRepository = new SocioRepository(SqlConnectionString);
+            ICuotaRepository cuotaRepository = new CuotaRepository(SqlConnectionString);
             SocioPresenter socioPresenter = new SocioPresenter(socioView, socioRepository, cuotaRepository);
         }
 
         private void ShowCuotasView(object? sender, EventArgs e)
         {
             ICuotaView cuotaView = CuotaView.GetInstance((Form) mainView);
-            ICuotaRepository cuotaRepository = new CuotaRepository(mySqlConnectionString);
-            ISocioRepository socioRepository = new SocioRepository(mySqlConnectionString);
-            ITipoCuotaRepository tipoCuotaRepository = new TipoCuotaRepository(mySqlConnectionString);
+            ICuotaRepository cuotaRepository = new CuotaRepository(SqlConnectionString);
+            ISocioRepository socioRepository = new SocioRepository(SqlConnectionString);
+            ITipoCuotaRepository tipoCuotaRepository = new TipoCuotaRepository(SqlConnectionString);
             CuotaPresenter cuotaPresenter = new CuotaPresenter(cuotaView, cuotaRepository, socioRepository, tipoCuotaRepository);
         }
 
         private void ShowTiposCuotasView(object? sender, EventArgs e)
         {
             ITipoCuotaView tipoCuotaView = TipoCuotaView.GetInstance((Form) mainView);
-            ITipoCuotaRepository tipoCuotaRepository = new TipoCuotaRepository(mySqlConnectionString);
+            ITipoCuotaRepository tipoCuotaRepository = new TipoCuotaRepository(SqlConnectionString);
             TipoCuotaPresenter tipoCuotaPresenter = new TipoCuotaPresenter(tipoCuotaView, tipoCuotaRepository);
         }
 

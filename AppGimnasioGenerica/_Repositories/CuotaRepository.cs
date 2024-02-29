@@ -1,5 +1,6 @@
 ﻿using DesktopAppGimnasio.Models;
-using MySql.Data.MySqlClient;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace DesktopAppGimnasio._Repositories
 {
@@ -15,50 +16,50 @@ namespace DesktopAppGimnasio._Repositories
         // Methods
         public void Add(CuotaModel cuotaModel)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                using (MySqlCommand command = connection.CreateCommand())
+                using (SqlCommand command = connection.CreateCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"INSERT INTO cuotas (codigo_socio_fk, id_tipo_fk, fecha_pago, fecha_vencimiento, mes_abonado, monto_abonado)
                                             VALUES (@codigoSocio, @id_tipo_nuevo, @fecha_pago_nuevo, @fecha_vencimiento_nuevo, @mes_abonado_nuevo, @monto_abonado_nuevo);";
 
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "codigoSocio",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = cuotaModel.CodigoSocio
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "id_tipo_nuevo",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = cuotaModel.IdTipoCuota
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "fecha_pago_nuevo",
-                        MySqlDbType = MySqlDbType.Date,
+                        SqlDbType = SqlDbType.Date,
                         Value = cuotaModel.FechaDePago
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "fecha_vencimiento_nuevo",
-                        MySqlDbType = MySqlDbType.Date,
+                        SqlDbType = SqlDbType.Date,
                         Value = cuotaModel.FechaDeVencimiento
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "mes_abonado_nuevo",
-                        MySqlDbType = MySqlDbType.VarChar,
+                        SqlDbType = SqlDbType.VarChar,
                         Value = cuotaModel.MesQueAbona
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "monto_abonado_nuevo",
-                        MySqlDbType = MySqlDbType.Float,
+                        SqlDbType = SqlDbType.Float,
                         Value = cuotaModel.MontoAbonado
                     });
 
@@ -69,10 +70,10 @@ namespace DesktopAppGimnasio._Repositories
 
         public void Edit(CuotaModel cuotaModel)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                using (MySqlCommand command = connection.CreateCommand())
+                using (SqlCommand command = connection.CreateCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
@@ -81,46 +82,46 @@ namespace DesktopAppGimnasio._Repositories
                                                     mes_abonado = @mes_abonado_nuevo, monto_abonado = @monto_abonado_nuevo
                                             WHERE codigo_cuota = @codigoCuota;";
 
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "codigoCuota",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = cuotaModel.CodigoCuota
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "codigoSocio",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = cuotaModel.CodigoSocio
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "id_tipo_nuevo",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = cuotaModel.IdTipoCuota
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "fecha_pago_nuevo",
-                        MySqlDbType = MySqlDbType.Date,
+                        SqlDbType = SqlDbType.Date,
                         Value = cuotaModel.FechaDePago
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "fecha_vencimiento_nuevo",
-                        MySqlDbType = MySqlDbType.Date,
+                        SqlDbType = SqlDbType.Date,
                         Value = cuotaModel.FechaDeVencimiento
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "mes_abonado_nuevo",
-                        MySqlDbType = MySqlDbType.VarChar,
+                        SqlDbType = SqlDbType.VarChar,
                         Value = cuotaModel.MesQueAbona
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "monto_abonado_nuevo",
-                        MySqlDbType = MySqlDbType.Float,
+                        SqlDbType = SqlDbType.Float,
                         Value = cuotaModel.MontoAbonado
                     });
 
@@ -131,20 +132,20 @@ namespace DesktopAppGimnasio._Repositories
 
         public void Delete(int codigoCuota)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                using (MySqlCommand command = connection.CreateCommand())
+                using (SqlCommand command = connection.CreateCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"DELETE FROM cuotas
                                             WHERE codigo_cuota = @codigoCuota;";
 
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "codigoCuota",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = codigoCuota
                     });
 
@@ -155,20 +156,20 @@ namespace DesktopAppGimnasio._Repositories
 
         public void DeleteAllCuotasOfSocio(int codigoSocio)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                using (MySqlCommand command = connection.CreateCommand())
+                using (SqlCommand command = connection.CreateCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"DELETE FROM cuotas
                                             WHERE codigo_socio_fk = @codigoSocio;";
 
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "codigoSocio",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = codigoSocio
                     });
 
@@ -181,10 +182,10 @@ namespace DesktopAppGimnasio._Repositories
         {
             List<CuotaModel> cuotasList = new List<CuotaModel>();
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                using (MySqlCommand command = connection.CreateCommand())
+                using (SqlCommand command = connection.CreateCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
@@ -197,7 +198,7 @@ namespace DesktopAppGimnasio._Repositories
                                                 ON c.id_tipo_fk = t.id_tipo
                                             ORDER BY c.codigo_cuota DESC;";
 
-                    using (MySqlDataReader reader = command.ExecuteReader())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
 
                         while (reader.Read())
@@ -212,7 +213,7 @@ namespace DesktopAppGimnasio._Repositories
                             cuota.FechaDePago = (DateTime) reader[5];
                             cuota.FechaDeVencimiento = (DateTime) reader[6];
                             cuota.MesQueAbona = (String) reader[7];
-                            cuota.MontoAbonado = (float) reader[8];
+                            cuota.MontoAbonado = (float)(double) reader[8];
                             cuota.IdTipoCuota = (int) reader[9];
 
                             cuotasList.Add(cuota);
@@ -231,10 +232,10 @@ namespace DesktopAppGimnasio._Repositories
             int codigo_socio = int.TryParse(value, out _) ? int.Parse(value) : 0;
             string nombreYApellidoSocio = "%" + value + "%";
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                using (MySqlCommand command = connection.CreateCommand())
+                using (SqlCommand command = connection.CreateCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
@@ -248,26 +249,26 @@ namespace DesktopAppGimnasio._Repositories
                                             WHERE c.codigo_cuota = @codigo_cuota OR c.codigo_socio_fk = @codigo_socio OR s.nombre LIKE @nombre_apellido OR s.apellido LIKE @nombre_apellido OR
                                                   CONCAT(s.nombre, ' ', s.apellido) LIKE @nombre_apellido
                                             ORDER BY c.codigo_cuota DESC;";
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "codigo_cuota",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = codigo_cuota
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "codigo_socio",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = codigo_socio
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "nombre_apellido",
-                        MySqlDbType = MySqlDbType.VarChar,
+                        SqlDbType = SqlDbType.VarChar,
                         Value = nombreYApellidoSocio
                     });
 
-                    using (MySqlDataReader reader = command.ExecuteReader())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
 
                         while (reader.Read())
@@ -282,7 +283,7 @@ namespace DesktopAppGimnasio._Repositories
                             cuota.FechaDePago = (DateTime) reader[5];
                             cuota.FechaDeVencimiento = (DateTime) reader[6];
                             cuota.MesQueAbona = (String) reader[7];
-                            cuota.MontoAbonado = (float) reader[8];
+                            cuota.MontoAbonado = (float)(double) reader[8];
 
                             cuotasList.Add(cuota);
                         }
@@ -297,9 +298,9 @@ namespace DesktopAppGimnasio._Repositories
         {
             List<CuotaModel> cuotasVencidasList = new List<CuotaModel>();
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (MySqlCommand command = new MySqlCommand()) 
+                using (SqlCommand command = new SqlCommand()) 
                 {
                     connection.Open();
                     command.Connection = connection;
@@ -308,14 +309,14 @@ namespace DesktopAppGimnasio._Repositories
 		                                        JOIN
 	                                            socios AS s
 	                                            ON cv.codigo_socio_fk = s.codigo_socio
-                                            WHERE CURDATE() > cv.fecha_vencimiento AND
-                                                              s.esta_activo = TRUE AND
+                                            WHERE GETDATE() > cv.fecha_vencimiento AND
+                                                              s.esta_activo = 1 AND
                                                               cv.fecha_vencimiento = (SELECT MAX(c.fecha_vencimiento)
 															                          FROM cuotas AS c
 															                          WHERE c.codigo_socio_fk = cv.codigo_socio_fk);";
 
 
-                    using(MySqlDataReader reader = command.ExecuteReader()) 
+                    using(SqlDataReader reader = command.ExecuteReader()) 
                     {
 
                         while(reader.Read()) 
@@ -345,9 +346,9 @@ namespace DesktopAppGimnasio._Repositories
             int codigo_socio = int.TryParse(value, out _) ? int.Parse(value) : 0;
             string nombreYApellidoSocio = "%" + value + "%";
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (MySqlCommand command = new MySqlCommand())
+                using (SqlCommand command = new SqlCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
@@ -363,26 +364,26 @@ namespace DesktopAppGimnasio._Repositories
                                                               cv.fecha_vencimiento = (SELECT MAX(c.fecha_vencimiento)
 												                                      FROM cuotas AS c
 												                                      WHERE c.codigo_socio_fk = cv.codigo_socio_fk);";
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "codigoCuota",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = codigo_cuota
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "codigoSocio",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = codigo_socio
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "nombre_y_apellido",
-                        MySqlDbType = MySqlDbType.VarChar,
+                        SqlDbType = SqlDbType.VarChar,
                         Value = nombreYApellidoSocio
                     });
 
-                    using (MySqlDataReader reader = command.ExecuteReader())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
 
                         while (reader.Read())

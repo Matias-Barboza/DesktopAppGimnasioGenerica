@@ -380,7 +380,7 @@
             labelPesos.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelPesos.AutoSize = true;
             labelPesos.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
-            labelPesos.ForeColor = Color.White;
+            labelPesos.ForeColor = SystemColors.ControlText;
             labelPesos.Location = new Point(798, 181);
             labelPesos.Name = "labelPesos";
             labelPesos.Size = new Size(21, 23);

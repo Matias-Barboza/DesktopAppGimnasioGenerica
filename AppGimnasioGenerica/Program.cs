@@ -18,10 +18,10 @@ namespace DesktopAppGimnasio
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            String mySqlConnectionString = ConfigurationManager.ConnectionStrings["DesktopAppGimnasioGenerica.Properties.Settings.MySQLConnection"].ConnectionString;
+            String SqlConnectionString = ConfigurationManager.ConnectionStrings["DesktopAppGimnasioGenerica.Properties.Settings.SQLConnection"].ConnectionString;
 
             IMainView mainView = new MainView();
-            new MainPresenter(mainView, mySqlConnectionString);
+            new MainPresenter(mainView, SqlConnectionString);
             Application.Run((Form) mainView);
         }
     }

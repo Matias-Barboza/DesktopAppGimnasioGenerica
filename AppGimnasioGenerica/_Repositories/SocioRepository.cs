@@ -1,6 +1,6 @@
 ﻿using DesktopAppGimnasio.Models;
-using MySql.Data.MySqlClient;
-using static System.Windows.Forms.AxHost;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace DesktopAppGimnasio._Repositories
 {
@@ -16,31 +16,31 @@ namespace DesktopAppGimnasio._Repositories
         // Methods
         public void Add(SocioModel socioModel)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                using (MySqlCommand command = connection.CreateCommand())
+                using (SqlCommand command = connection.CreateCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"INSERT INTO socios (DNI, nombre, apellido, esta_activo)
-                                            VALUES (@DNI_nuevo, @nombre_nuevo, @apellido_nuevo, true);";
-                    command.Parameters.Add(new MySqlParameter()
+                                            VALUES (@DNI_nuevo, @nombre_nuevo, @apellido_nuevo, 1);";
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "DNI_nuevo",
-                        MySqlDbType = MySqlDbType.VarChar,
+                        SqlDbType = SqlDbType.VarChar,
                         Value = socioModel.DNI
                     }) ;
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "nombre_nuevo",
-                        MySqlDbType = MySqlDbType.VarChar,
+                        SqlDbType = SqlDbType.VarChar,
                         Value = socioModel.Nombre
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "apellido_nuevo",
-                        MySqlDbType = MySqlDbType.VarChar,
+                        SqlDbType = SqlDbType.VarChar,
                         Value = socioModel.Apellido
                     });
 
@@ -51,43 +51,43 @@ namespace DesktopAppGimnasio._Repositories
 
         public void Edit(SocioModel socioModel)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                using (MySqlCommand command = connection.CreateCommand())
+                using (SqlCommand command = connection.CreateCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"UPDATE socios SET DNI = @DNI_nuevo, nombre = @nombre_nuevo, apellido = @apellido_nuevo, esta_activo = @estado_nuevo
                                            WHERE codigo_socio = @codigoSocio;";
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "codigoSocio",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = socioModel.CodigoSocio
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "DNI_nuevo",
-                        MySqlDbType = MySqlDbType.VarChar,
+                        SqlDbType = SqlDbType.VarChar,
                         Value = socioModel.DNI
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "nombre_nuevo",
-                        MySqlDbType = MySqlDbType.VarChar,
+                        SqlDbType = SqlDbType.VarChar,
                         Value = socioModel.Nombre
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "apellido_nuevo",
-                        MySqlDbType = MySqlDbType.VarChar,
+                        SqlDbType = SqlDbType.VarChar,
                         Value = socioModel.Apellido
                     });
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "estado_nuevo",
-                        MySqlDbType = MySqlDbType.Bit,
+                        SqlDbType = SqlDbType.Bit,
                         Value = socioModel.EstaActivo
                     });
 
@@ -98,19 +98,19 @@ namespace DesktopAppGimnasio._Repositories
 
         public void Delete(int codigoSocio)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                using (MySqlCommand command = connection.CreateCommand())
+                using (SqlCommand command = connection.CreateCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"DELETE FROM socios
                                             WHERE codigo_socio = @codigoSocio;";
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "codigoSocio",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = codigoSocio
                     });
 
@@ -123,20 +123,20 @@ namespace DesktopAppGimnasio._Repositories
         {
             bool state;
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                using(MySqlCommand command = connection.CreateCommand())
+                using(SqlCommand command = connection.CreateCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"SELECT esta_activo
                                             FROM socios
                                             WHERE codigo_socio = @codigoSocio";
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "codigoSocio",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = codigoSocio
                     });
 
@@ -149,19 +149,19 @@ namespace DesktopAppGimnasio._Repositories
 
         public void ReactivateSocio(int codigoSocio) 
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                using (MySqlCommand command = connection.CreateCommand())
+                using (SqlCommand command = connection.CreateCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"UPDATE socios SET esta_activo = true
                                             WHERE codigo_socio = @codigoSocio";
-                    command.Parameters.Add(new MySqlParameter()
+                    command.Parameters.Add(new SqlParameter()
                     {
                         ParameterName = "codigoSocio",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = codigoSocio
                     });
 
@@ -174,10 +174,10 @@ namespace DesktopAppGimnasio._Repositories
         {
             List<SocioModel> sociosList = new List<SocioModel>();
 
-            using(MySqlConnection connection = new MySqlConnection(connectionString)) 
+            using(SqlConnection connection = new SqlConnection(connectionString)) 
             {
 
-                using (MySqlCommand command = connection.CreateCommand()) 
+                using (SqlCommand command = connection.CreateCommand()) 
                 {
                     connection.Open();
                     command.Connection = connection;
@@ -185,7 +185,7 @@ namespace DesktopAppGimnasio._Repositories
                                             FROM socios
                                             ORDER BY codigo_socio DESC;";
 
-                    using (MySqlDataReader reader = command.ExecuteReader()) 
+                    using (SqlDataReader reader = command.ExecuteReader()) 
                     {
                     
                         while (reader.Read()) 
@@ -213,9 +213,9 @@ namespace DesktopAppGimnasio._Repositories
             int codigoSocio = int.TryParse(value, out _) ? Convert.ToInt32(value) : 0;
             String nombreYApellidoSocio = "%" + value + "%";
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (MySqlCommand command = connection.CreateCommand())
+                using (SqlCommand command = connection.CreateCommand())
                 {
                     connection.Open();
                     command.Connection = connection;
@@ -223,18 +223,18 @@ namespace DesktopAppGimnasio._Repositories
                                             WHERE codigo_socio = @numero_socio OR nombre LIKE @nombre_y_apellido OR apellido like @nombre_y_apellido OR
                                                   CONCAT(nombre, ' ', apellido) LIKE @nombre_y_apellido
                                             ORDER BY codigo_socio DESC;";
-                    command.Parameters.Add(new MySqlParameter(){
+                    command.Parameters.Add(new SqlParameter(){
                         ParameterName = "@numero_socio",
-                        MySqlDbType = MySqlDbType.Int32,
+                        SqlDbType = SqlDbType.Int,
                         Value = codigoSocio
                     });
-                    command.Parameters.Add(new MySqlParameter() {
+                    command.Parameters.Add(new SqlParameter() {
                         ParameterName = "@nombre_y_apellido",
-                        MySqlDbType = MySqlDbType.VarChar,
+                        SqlDbType = SqlDbType.VarChar,
                         Value = nombreYApellidoSocio
                     });
 
-                    using (MySqlDataReader reader = command.ExecuteReader())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
 
                         while (reader.Read())

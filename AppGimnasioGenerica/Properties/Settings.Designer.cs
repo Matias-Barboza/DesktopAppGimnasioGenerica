@@ -26,10 +26,11 @@ namespace DesktopAppGimnasioGenerica.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;port=3306;user id=root;password=root;database=gimnasio;")]
-        public string MySQLConnection {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-7IRK3HN6\\SQLEXPRESS;Initial Catalog=gimnasio;Integrated Securi" +
+            "ty=True;Encrypt=True;TrustServerCertificate=True;")]
+        public string SQLConnection {
             get {
-                return ((string)(this["MySQLConnection"]));
+                return ((string)(this["SQLConnection"]));
             }
         }
     }
