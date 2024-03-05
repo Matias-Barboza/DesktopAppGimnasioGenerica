@@ -35,10 +35,16 @@
         public event EventHandler CancelEvent;
 
         public event EventHandler RefreshDataGridView;
+        public event EventHandler RefreshSociosQuickNotification;
 
         public void SetSocioListBindindSource(BindingSource sociosList)
         {
             dataGridViewSocios.DataSource = sociosList;
+        }
+
+        public Form GetMdiContainer() 
+        {
+            return this.MdiParent;
         }
 
         public void CleanInterfaceProperties()
@@ -112,6 +118,7 @@
                 MustEnter = true;
                 DeleteEvent?.Invoke(this, EventArgs.Empty);
                 RefreshDataGridView?.Invoke(this, EventArgs.Empty);
+                RefreshSociosQuickNotification?.Invoke(this, EventArgs.Empty);
                 MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CleanInterfaceProperties();
                 MustEnter = false;
@@ -125,6 +132,7 @@
             if (isSuccessful)
             {
                 RefreshDataGridView?.Invoke(this, EventArgs.Empty);
+                RefreshSociosQuickNotification?.Invoke(this, EventArgs.Empty);
                 tabControl.SelectedTab = tabPageSociosVisualizer;
                 MustEnter = false;
             }

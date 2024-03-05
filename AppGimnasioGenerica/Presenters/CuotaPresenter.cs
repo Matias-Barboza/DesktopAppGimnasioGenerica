@@ -37,6 +37,7 @@ namespace DesktopAppGimnasio.Presenters
             this.view.GetAmountsEvent += GetAmounts;
             this.view.RefreshDataGridView += RefreshDataGridView;
             this.view.RefreshDebtsDataGridView += RefreshDebtsDataGridView;
+            this.view.RefreshCuotasQuickNotification += RefreshCuotasQuickNotification;
 
             this.view.SetCuotasBindingSource(cuotasBindingSource);
             this.view.SetCuotasVencidasBindingSource(cuotasVencidasBindingSource);
@@ -207,7 +208,14 @@ namespace DesktopAppGimnasio.Presenters
             view.MustEnter = false;
             CleanFieldsView();
         }
-    
+
+        private void RefreshCuotasQuickNotification(object? sender, EventArgs e)
+        {
+            IMainView mainView = (MainView)view.GetMdiContainer();
+
+            mainView.RefreshAmountCuotasQuickNotification();
+        }
+
         private void CleanFieldsView()
         {
             view.CodigoCuota = 0;

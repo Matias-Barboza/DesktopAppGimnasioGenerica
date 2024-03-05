@@ -27,9 +27,13 @@
         event EventHandler CancelEvent;
 
         event EventHandler RefreshDataGridView;
+        event EventHandler RefreshSociosQuickNotification;
 
         // Methods
         void SetSocioListBindindSource(BindingSource socioList);
+
+        Form GetMdiContainer();
+
         void Show();
     }
 }

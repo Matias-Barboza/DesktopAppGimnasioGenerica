@@ -48,6 +48,8 @@
         public event EventHandler RefreshDataGridView;
         public event EventHandler RefreshDebtsDataGridView;
 
+        public event EventHandler RefreshCuotasQuickNotification;
+
         public void SetCuotasBindingSource(BindingSource cuotasList)
         {
             dataGridViewCuotas.DataSource = cuotasList;
@@ -56,6 +58,11 @@
         public void SetCuotasVencidasBindingSource(BindingSource cuotasList)
         {
             dataGridViewCuotasVencidas.DataSource = cuotasList;
+        }
+
+        public Form GetMdiContainer() 
+        {
+            return this.MdiParent;
         }
 
         public void HideColumn(int index)
@@ -163,6 +170,7 @@
                 DeleteEvent?.Invoke(this, EventArgs.Empty);
                 RefreshDataGridView?.Invoke(this, EventArgs.Empty);
                 RefreshDebtsDataGridView?.Invoke(this, EventArgs.Empty);
+                RefreshCuotasQuickNotification?.Invoke(this, EventArgs.Empty);
                 MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CleanInterfaceProperties();
                 MustEnter = false;
@@ -177,6 +185,7 @@
             {
                 RefreshDataGridView?.Invoke(this, EventArgs.Empty);
                 RefreshDebtsDataGridView?.Invoke(this, EventArgs.Empty);
+                RefreshCuotasQuickNotification?.Invoke(this, EventArgs.Empty);
                 tabControl.SelectedTab = tabPageCuotasVisualizer;
                 MustEnter = false;
             }

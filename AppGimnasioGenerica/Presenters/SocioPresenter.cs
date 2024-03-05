@@ -29,6 +29,7 @@ namespace DesktopAppGimnasio.Presenters
             this.view.CancelEvent += CancelAction;
 
             this.view.RefreshDataGridView += RefreshDataGridView;
+            this.view.RefreshSociosQuickNotification += RefreshSociosQuickNotification;
 
             this.view.SetSocioListBindindSource(sociosBindingsource);
 
@@ -36,6 +37,7 @@ namespace DesktopAppGimnasio.Presenters
 
             this.view.Show();
         }
+
 
         //Common methods
         private void LoadAllSocioList()
@@ -164,6 +166,13 @@ namespace DesktopAppGimnasio.Presenters
         {
             view.MustEnter = false;
             CleanViewFields();
+        }
+
+        private void RefreshSociosQuickNotification(object? sender, EventArgs e)
+        {
+            IMainView mainView = (MainView) view.GetMdiContainer();
+
+            mainView.RefreshAmountSociosQuickNotification();
         }
 
         private void CleanViewFields()

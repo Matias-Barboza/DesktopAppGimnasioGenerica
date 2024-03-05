@@ -18,6 +18,10 @@ namespace DesktopAppGimnasio.Presenters
             this.mainView.ShowCuotasView += ShowCuotasView;
             this.mainView.ShowTiposCuotasView += ShowTiposCuotasView;
             this.mainView.ShowAboutView += ShowAboutView;
+
+            this.mainView.RefreshSociosQuickNotification += RefreshSociosQuickNotification;
+            this.mainView.RefreshCuotasQuickNotification += RefreshCuotasQuickNotification;
+            this.mainView.RefreshAllQuickNotifications += RefreshAllQuickNotifications;
         }
 
         //private void ShowPresentationView(object? sender, EventArgs e)
@@ -54,6 +58,30 @@ namespace DesktopAppGimnasio.Presenters
         {
             IAcercaDeView acercaDeView = AcercaDeView.GetInstance((Form) mainView);
             AcercaDePresenter acercaDePresenter = new AcercaDePresenter(acercaDeView);
+        }
+
+        private void RefreshSociosQuickNotification(object? sender, EventArgs e) 
+        {
+            ISocioRepository socioRepository = new SocioRepository(SqlConnectionString);
+
+            int inactiveSocios = socioRepository.GetCountInactiveSocios();
+
+            mainView.InactiveSocios = inactiveSocios.ToString();
+        }
+
+        private void RefreshCuotasQuickNotification(object? sender, EventArgs e) 
+        {
+            ICuotaRepository cuotaRepository = new CuotaRepository(SqlConnectionString);
+
+            int amountDebts = cuotaRepository.GetAmountDebts();
+
+            mainView.Debts = amountDebts.ToString();
+        }
+
+        private void RefreshAllQuickNotifications(object? sender, EventArgs e)
+        {
+            RefreshSociosQuickNotification(this, EventArgs.Empty);
+            RefreshCuotasQuickNotification(this, EventArgs.Empty);
         }
     }
 }

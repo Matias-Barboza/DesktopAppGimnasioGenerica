@@ -170,6 +170,29 @@ namespace DesktopAppGimnasio._Repositories
             }
         }
 
+        public int GetCountInactiveSocios()
+        {
+            int count = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"SELECT count(*)
+                                            FROM socios
+                                            WHERE esta_activo = 0";
+
+
+                    count = (int) command.ExecuteScalar();
+                }
+            }
+
+            return count;
+        }
+
         public IEnumerable<SocioModel> GetAll()
         {
             List<SocioModel> sociosList = new List<SocioModel>();

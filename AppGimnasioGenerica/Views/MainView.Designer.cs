@@ -28,10 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             buttonSocios = new Button();
             buttonCuotas = new Button();
             panelLeft = new Panel();
+            buttonCuotasImpagas = new Button();
+            buttonSociosInactivos = new Button();
+            label1 = new Label();
             buttonInfo = new Button();
             buttonTiposCuotas = new Button();
             pictureBoxLogo = new PictureBox();
@@ -44,6 +48,7 @@
             buttonMaximize = new Button();
             buttonCloseTB = new Button();
             panelYellowLine = new Panel();
+            toolTip = new ToolTip(components);
             panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             panelToolBarContainer.SuspendLayout();
@@ -61,7 +66,7 @@
             buttonSocios.ForeColor = SystemColors.ControlText;
             buttonSocios.Image = (Image)resources.GetObject("buttonSocios.Image");
             buttonSocios.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSocios.Location = new Point(5, 150);
+            buttonSocios.Location = new Point(5, 208);
             buttonSocios.Name = "buttonSocios";
             buttonSocios.Size = new Size(292, 40);
             buttonSocios.TabIndex = 0;
@@ -82,7 +87,7 @@
             buttonCuotas.ForeColor = SystemColors.ControlText;
             buttonCuotas.Image = (Image)resources.GetObject("buttonCuotas.Image");
             buttonCuotas.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonCuotas.Location = new Point(5, 196);
+            buttonCuotas.Location = new Point(5, 254);
             buttonCuotas.Name = "buttonCuotas";
             buttonCuotas.Size = new Size(292, 40);
             buttonCuotas.TabIndex = 1;
@@ -95,6 +100,9 @@
             // 
             panelLeft.BackColor = SystemColors.Control;
             panelLeft.BackgroundImageLayout = ImageLayout.Stretch;
+            panelLeft.Controls.Add(buttonCuotasImpagas);
+            panelLeft.Controls.Add(buttonSociosInactivos);
+            panelLeft.Controls.Add(label1);
             panelLeft.Controls.Add(buttonInfo);
             panelLeft.Controls.Add(buttonTiposCuotas);
             panelLeft.Controls.Add(pictureBoxLogo);
@@ -108,6 +116,64 @@
             panelLeft.Size = new Size(300, 710);
             panelLeft.TabIndex = 3;
             // 
+            // buttonCuotasImpagas
+            // 
+            buttonCuotasImpagas.BackColor = Color.Transparent;
+            buttonCuotasImpagas.Cursor = Cursors.Hand;
+            buttonCuotasImpagas.FlatAppearance.BorderColor = Color.Black;
+            buttonCuotasImpagas.FlatAppearance.BorderSize = 2;
+            buttonCuotasImpagas.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonCuotasImpagas.FlatStyle = FlatStyle.Flat;
+            buttonCuotasImpagas.Font = new Font("Arial Rounded MT Bold", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonCuotasImpagas.ForeColor = SystemColors.ControlText;
+            buttonCuotasImpagas.Image = (Image)resources.GetObject("buttonCuotasImpagas.Image");
+            buttonCuotasImpagas.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonCuotasImpagas.Location = new Point(75, 144);
+            buttonCuotasImpagas.Name = "buttonCuotasImpagas";
+            buttonCuotasImpagas.Padding = new Padding(0, 0, 0, 1);
+            buttonCuotasImpagas.Size = new Size(64, 30);
+            buttonCuotasImpagas.TabIndex = 7;
+            buttonCuotasImpagas.Text = "1";
+            buttonCuotasImpagas.TextAlign = ContentAlignment.MiddleRight;
+            toolTip.SetToolTip(buttonCuotasImpagas, "Cantidad de cuotas vencidas");
+            buttonCuotasImpagas.UseVisualStyleBackColor = false;
+            // 
+            // buttonSociosInactivos
+            // 
+            buttonSociosInactivos.BackColor = Color.Transparent;
+            buttonSociosInactivos.Cursor = Cursors.Hand;
+            buttonSociosInactivos.FlatAppearance.BorderColor = Color.Black;
+            buttonSociosInactivos.FlatAppearance.BorderSize = 2;
+            buttonSociosInactivos.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonSociosInactivos.FlatStyle = FlatStyle.Flat;
+            buttonSociosInactivos.Font = new Font("Arial Rounded MT Bold", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonSociosInactivos.ForeColor = SystemColors.ControlText;
+            buttonSociosInactivos.Image = (Image)resources.GetObject("buttonSociosInactivos.Image");
+            buttonSociosInactivos.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonSociosInactivos.Location = new Point(5, 144);
+            buttonSociosInactivos.Name = "buttonSociosInactivos";
+            buttonSociosInactivos.Padding = new Padding(0, 0, 0, 1);
+            buttonSociosInactivos.Size = new Size(64, 30);
+            buttonSociosInactivos.TabIndex = 6;
+            buttonSociosInactivos.Text = "1";
+            buttonSociosInactivos.TextAlign = ContentAlignment.MiddleRight;
+            toolTip.SetToolTip(buttonSociosInactivos, "Cantidad de socios inactivos");
+            buttonSociosInactivos.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Black;
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Font = new Font("Arial Rounded MT Bold", 12F);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(-2, 114);
+            label1.Name = "label1";
+            label1.Padding = new Padding(0, 3, 210, 3);
+            label1.Size = new Size(398, 26);
+            label1.TabIndex = 5;
+            label1.Text = "Notificaciones rápidas";
+            // 
             // buttonInfo
             // 
             buttonInfo.BackColor = Color.Transparent;
@@ -120,7 +186,7 @@
             buttonInfo.ForeColor = SystemColors.ControlText;
             buttonInfo.Image = (Image)resources.GetObject("buttonInfo.Image");
             buttonInfo.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonInfo.Location = new Point(5, 288);
+            buttonInfo.Location = new Point(5, 346);
             buttonInfo.Name = "buttonInfo";
             buttonInfo.Size = new Size(292, 40);
             buttonInfo.TabIndex = 3;
@@ -140,7 +206,7 @@
             buttonTiposCuotas.ForeColor = SystemColors.ControlText;
             buttonTiposCuotas.Image = (Image)resources.GetObject("buttonTiposCuotas.Image");
             buttonTiposCuotas.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonTiposCuotas.Location = new Point(5, 242);
+            buttonTiposCuotas.Location = new Point(5, 300);
             buttonTiposCuotas.Name = "buttonTiposCuotas";
             buttonTiposCuotas.Size = new Size(292, 40);
             buttonTiposCuotas.TabIndex = 2;
@@ -166,7 +232,7 @@
             labelSections.BorderStyle = BorderStyle.FixedSingle;
             labelSections.Font = new Font("Arial Rounded MT Bold", 12F);
             labelSections.ForeColor = Color.White;
-            labelSections.Location = new Point(0, 121);
+            labelSections.Location = new Point(0, 179);
             labelSections.Name = "labelSections";
             labelSections.Padding = new Padding(0, 3, 210, 3);
             labelSections.Size = new Size(304, 26);
@@ -291,6 +357,10 @@
             panelYellowLine.Size = new Size(853, 10);
             panelYellowLine.TabIndex = 7;
             // 
+            // toolTip
+            // 
+            toolTip.ToolTipIcon = ToolTipIcon.Info;
+            // 
             // MainView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -307,7 +377,7 @@
             Name = "MainView";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MainView";
+            Load += MainView_Load;
             panelLeft.ResumeLayout(false);
             panelLeft.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
@@ -332,5 +402,9 @@
         private Button buttonCloseTB;
         private Panel panelYellowLine;
         private Panel panelMove;
+        private Button buttonSociosInactivos;
+        private Label label1;
+        private Button buttonCuotasImpagas;
+        private ToolTip toolTip;
     }
 }

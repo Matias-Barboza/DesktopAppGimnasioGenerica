@@ -10,11 +10,18 @@
             InitializeComponent();
         }
 
+        public string InactiveSocios { get => buttonSociosInactivos.Text; set => buttonSociosInactivos.Text = value; }
+        public string Debts { get => buttonCuotasImpagas.Text; set => buttonCuotasImpagas.Text = value; }
+
         //public event EventHandler ShowPresentationView;
         public event EventHandler ShowSociosView;
         public event EventHandler ShowCuotasView;
         public event EventHandler ShowTiposCuotasView;
         public event EventHandler ShowAboutView;
+
+        public event EventHandler RefreshSociosQuickNotification;
+        public event EventHandler RefreshCuotasQuickNotification;
+        public event EventHandler RefreshAllQuickNotifications;
 
         //private void MainView_Load(object sender, EventArgs e)
         //{
@@ -43,7 +50,7 @@
 
         private void buttonSocios_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.D1) 
+            if (e.KeyCode == Keys.D1)
             {
                 ShowSociosView?.Invoke(this, EventArgs.Empty);
             }
@@ -59,7 +66,7 @@
 
         private void buttonTiposCuotas_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.D3) 
+            if (e.KeyCode == Keys.D3)
             {
                 ShowTiposCuotasView?.Invoke(this, EventArgs.Empty);
             }
@@ -109,6 +116,25 @@
         private void panelMove_MouseUp(object sender, MouseEventArgs e)
         {
             dragging = false;
+        }
+
+        private void MainView_Load(object sender, EventArgs e)
+        {
+            RefreshAllQuickNotifications?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void RefreshQuickNotifications() 
+        {
+            RefreshAllQuickNotifications?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void RefreshAmountSociosQuickNotification()
+        {
+            RefreshSociosQuickNotification?.Invoke(this, EventArgs.Empty);
+        }
+        public void RefreshAmountCuotasQuickNotification()
+        {
+            RefreshCuotasQuickNotification?.Invoke(this, EventArgs.Empty);
         }
     }
 }

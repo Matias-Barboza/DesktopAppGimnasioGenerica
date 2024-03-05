@@ -35,9 +35,13 @@
         event EventHandler RefreshDataGridView;
         event EventHandler RefreshDebtsDataGridView;
 
+        event EventHandler RefreshCuotasQuickNotification;
+
         public void SetCuotasBindingSource(BindingSource cuotasList);
 
         public void SetCuotasVencidasBindingSource(BindingSource cuotasVencidasList);
+
+        Form GetMdiContainer();
 
         public void HideColumn(int index);
         public void HideDebtsDataGridColumn(int index);
