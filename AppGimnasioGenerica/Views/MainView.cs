@@ -12,6 +12,7 @@
 
         public string InactiveSocios { get => buttonSociosInactivos.Text; set => buttonSociosInactivos.Text = value; }
         public string Debts { get => buttonCuotasImpagas.Text; set => buttonCuotasImpagas.Text = value; }
+        public string UpcomingDebts { get => buttonProximasCuotasImpagas.Text; set => buttonProximasCuotasImpagas.Text = value; }
 
         //public event EventHandler ShowPresentationView;
         public event EventHandler ShowSociosView;
@@ -21,6 +22,7 @@
 
         public event EventHandler RefreshSociosQuickNotification;
         public event EventHandler RefreshCuotasQuickNotification;
+        public event EventHandler RefreshCuotasAVencerseQuickNotification;
         public event EventHandler RefreshAllQuickNotifications;
 
         //private void MainView_Load(object sender, EventArgs e)
@@ -121,9 +123,17 @@
         private void MainView_Load(object sender, EventArgs e)
         {
             RefreshAllQuickNotifications?.Invoke(this, EventArgs.Empty);
+            timer.Start();
         }
 
-        public void RefreshQuickNotifications() 
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            RefreshAmountCuotasAVencerseQuickNotification();
+
+            timer.Start();
+        }
+
+        public void RefreshQuickNotifications()
         {
             RefreshAllQuickNotifications?.Invoke(this, EventArgs.Empty);
         }
@@ -136,5 +146,11 @@
         {
             RefreshCuotasQuickNotification?.Invoke(this, EventArgs.Empty);
         }
+
+        public void RefreshAmountCuotasAVencerseQuickNotification()
+        {
+            RefreshCuotasAVencerseQuickNotification?.Invoke(this, EventArgs.Empty);
+        }
+
     }
 }

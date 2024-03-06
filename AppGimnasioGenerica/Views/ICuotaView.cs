@@ -44,6 +44,7 @@
         Form GetMdiContainer();
 
         public void HideColumn(int index);
+
         public void HideDebtsDataGridColumn(int index);
 
         public void ShowDebtsMessage(int count);

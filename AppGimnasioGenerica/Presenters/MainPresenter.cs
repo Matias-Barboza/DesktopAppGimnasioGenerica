@@ -21,6 +21,7 @@ namespace DesktopAppGimnasio.Presenters
 
             this.mainView.RefreshSociosQuickNotification += RefreshSociosQuickNotification;
             this.mainView.RefreshCuotasQuickNotification += RefreshCuotasQuickNotification;
+            this.mainView.RefreshCuotasAVencerseQuickNotification += RefreshCuotasAVencerseQuickNotification;
             this.mainView.RefreshAllQuickNotifications += RefreshAllQuickNotifications;
         }
 
@@ -78,10 +79,20 @@ namespace DesktopAppGimnasio.Presenters
             mainView.Debts = amountDebts.ToString();
         }
 
+        private void RefreshCuotasAVencerseQuickNotification(object? sender, EventArgs e)
+        {
+            ICuotaRepository cuotaRepository = new CuotaRepository(SqlConnectionString);
+
+            int upcomingDebts = cuotaRepository.GetAmountUpcomingDebts();
+
+            mainView.UpcomingDebts = upcomingDebts.ToString();
+        }
+
         private void RefreshAllQuickNotifications(object? sender, EventArgs e)
         {
             RefreshSociosQuickNotification(this, EventArgs.Empty);
             RefreshCuotasQuickNotification(this, EventArgs.Empty);
+            RefreshCuotasAVencerseQuickNotification(this, EventArgs.Empty);
         }
     }
 }

@@ -33,6 +33,7 @@
             buttonSocios = new Button();
             buttonCuotas = new Button();
             panelLeft = new Panel();
+            buttonProximasCuotasImpagas = new Button();
             buttonCuotasImpagas = new Button();
             buttonSociosInactivos = new Button();
             label1 = new Label();
@@ -49,6 +50,7 @@
             buttonCloseTB = new Button();
             panelYellowLine = new Panel();
             toolTip = new ToolTip(components);
+            timer = new System.Windows.Forms.Timer(components);
             panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             panelToolBarContainer.SuspendLayout();
@@ -100,6 +102,7 @@
             // 
             panelLeft.BackColor = SystemColors.Control;
             panelLeft.BackgroundImageLayout = ImageLayout.Stretch;
+            panelLeft.Controls.Add(buttonProximasCuotasImpagas);
             panelLeft.Controls.Add(buttonCuotasImpagas);
             panelLeft.Controls.Add(buttonSociosInactivos);
             panelLeft.Controls.Add(label1);
@@ -115,6 +118,28 @@
             panelLeft.Name = "panelLeft";
             panelLeft.Size = new Size(300, 710);
             panelLeft.TabIndex = 3;
+            // 
+            // buttonProximasCuotasImpagas
+            // 
+            buttonProximasCuotasImpagas.BackColor = Color.Transparent;
+            buttonProximasCuotasImpagas.Cursor = Cursors.Hand;
+            buttonProximasCuotasImpagas.FlatAppearance.BorderColor = Color.Black;
+            buttonProximasCuotasImpagas.FlatAppearance.BorderSize = 2;
+            buttonProximasCuotasImpagas.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonProximasCuotasImpagas.FlatStyle = FlatStyle.Flat;
+            buttonProximasCuotasImpagas.Font = new Font("Arial Rounded MT Bold", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            buttonProximasCuotasImpagas.ForeColor = SystemColors.ControlText;
+            buttonProximasCuotasImpagas.Image = (Image)resources.GetObject("buttonProximasCuotasImpagas.Image");
+            buttonProximasCuotasImpagas.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonProximasCuotasImpagas.Location = new Point(145, 144);
+            buttonProximasCuotasImpagas.Name = "buttonProximasCuotasImpagas";
+            buttonProximasCuotasImpagas.Padding = new Padding(0, 0, 0, 1);
+            buttonProximasCuotasImpagas.Size = new Size(64, 30);
+            buttonProximasCuotasImpagas.TabIndex = 8;
+            buttonProximasCuotasImpagas.Text = "1";
+            buttonProximasCuotasImpagas.TextAlign = ContentAlignment.MiddleRight;
+            toolTip.SetToolTip(buttonProximasCuotasImpagas, "Cantidad de cuotas próximas a vencerse.");
+            buttonProximasCuotasImpagas.UseVisualStyleBackColor = false;
             // 
             // buttonCuotasImpagas
             // 
@@ -135,7 +160,7 @@
             buttonCuotasImpagas.TabIndex = 7;
             buttonCuotasImpagas.Text = "1";
             buttonCuotasImpagas.TextAlign = ContentAlignment.MiddleRight;
-            toolTip.SetToolTip(buttonCuotasImpagas, "Cantidad de cuotas vencidas");
+            toolTip.SetToolTip(buttonCuotasImpagas, "Cantidad de cuotas vencidas.");
             buttonCuotasImpagas.UseVisualStyleBackColor = false;
             // 
             // buttonSociosInactivos
@@ -157,7 +182,7 @@
             buttonSociosInactivos.TabIndex = 6;
             buttonSociosInactivos.Text = "1";
             buttonSociosInactivos.TextAlign = ContentAlignment.MiddleRight;
-            toolTip.SetToolTip(buttonSociosInactivos, "Cantidad de socios inactivos");
+            toolTip.SetToolTip(buttonSociosInactivos, "Cantidad de socios inactivos.");
             buttonSociosInactivos.UseVisualStyleBackColor = false;
             // 
             // label1
@@ -361,6 +386,11 @@
             // 
             toolTip.ToolTipIcon = ToolTipIcon.Info;
             // 
+            // timer
+            // 
+            timer.Interval = 3600000;
+            timer.Tick += timer_Tick;
+            // 
             // MainView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -406,5 +436,7 @@
         private Label label1;
         private Button buttonCuotasImpagas;
         private ToolTip toolTip;
+        private Button buttonProximasCuotasImpagas;
+        private System.Windows.Forms.Timer timer;
     }
 }

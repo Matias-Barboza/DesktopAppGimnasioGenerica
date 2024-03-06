@@ -216,6 +216,13 @@ namespace DesktopAppGimnasio.Presenters
             mainView.RefreshAmountCuotasQuickNotification();
         }
 
+        private void RefreshCuotasAVencerseQuickNotification(object? sender, EventArgs e) 
+        {
+            IMainView mainView = (MainView)view.GetMdiContainer();
+
+            mainView.RefreshAmountCuotasAVencerseQuickNotification();
+        }
+
         private void CleanFieldsView()
         {
             view.CodigoCuota = 0;

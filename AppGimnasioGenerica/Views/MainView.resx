@@ -134,6 +134,17 @@
         yvEPvKEgMgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="buttonProximasCuotasImpagas.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAH9JREFUSEvd
+        jTEOgDAMxPr/T8N0UXW6NjEjljyExGX9lmfgZ9JjJz/hD+xz+o7xUPOu8HlEF/ge/8QDzbvO6XvEH9rn
+        iS0pkiLtZAuJyG1BInJb3KK0c1tIRG4LEpHbIkWuuO2OkIjcFiQit0WKpEg72ZIiYkuKiCNSOPF3rPUC
+        ZqfkHFHjTAUAAAAASUVORK5CYII=
+</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="buttonCuotasImpagas.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAIhJREFUSEvd
@@ -142,9 +153,6 @@
         5IgknuR3rHUDv5HoGCvuS4wAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="buttonSociosInactivos.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAANFJREFUSEvt
@@ -199,4 +207,7 @@
         QzPK5i505xfuQne+tdYKjfEAsK3PMQybfMIAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>108, 17</value>
+  </metadata>
 </root>
