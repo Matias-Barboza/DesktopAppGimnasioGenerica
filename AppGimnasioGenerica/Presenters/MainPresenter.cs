@@ -65,7 +65,7 @@ namespace DesktopAppGimnasio.Presenters
         {
             ISocioRepository socioRepository = new SocioRepository(SqlConnectionString);
 
-            int inactiveSocios = socioRepository.GetCountInactiveSocios();
+            int inactiveSocios = socioRepository.GetAmountInactiveSocios();
 
             mainView.InactiveSocios = inactiveSocios.ToString();
         }

@@ -5,6 +5,7 @@
         // Properties - Fields
         int CodigoCuota { get; set; }
         int CodigoSocio { get; set; }
+        String NombreYApellidoSocio { get; set; }
         DateTime FechaDePago { get; set; }
         DateTime FechaDeVencimiento { get; set; }
         String MesQueAbona { get; set; }
@@ -36,6 +37,8 @@
         event EventHandler RefreshDebtsDataGridView;
 
         event EventHandler RefreshCuotasQuickNotification;
+
+        event EventHandler SearchCoincidence;
 
         public void SetCuotasBindingSource(BindingSource cuotasList);
 

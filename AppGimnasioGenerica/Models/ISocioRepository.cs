@@ -7,7 +7,8 @@
         void Delete(int codigoSocio);
         bool IsActive(int codigoSocio);
         void ReactivateSocio(int codigoSocio);
-        int GetCountInactiveSocios();
+        int GetAmountInactiveSocios();
+        String GetCompleteName(int codigoSocio);
         IEnumerable<SocioModel> GetAll();
         IEnumerable<SocioModel> GetByValue(string value);
     }

@@ -38,6 +38,7 @@ namespace DesktopAppGimnasio.Presenters
             this.view.RefreshDataGridView += RefreshDataGridView;
             this.view.RefreshDebtsDataGridView += RefreshDebtsDataGridView;
             this.view.RefreshCuotasQuickNotification += RefreshCuotasQuickNotification;
+            this.view.SearchCoincidence += SearchCoincidence;
 
             this.view.SetCuotasBindingSource(cuotasBindingSource);
             this.view.SetCuotasVencidasBindingSource(cuotasVencidasBindingSource);
@@ -54,7 +55,7 @@ namespace DesktopAppGimnasio.Presenters
 
             if (view.MustShowDebtsMessage) 
             {
-                view.ShowDebtsMessage(cuotasVencidasList.Count());
+                view.ShowDebtsMessage(repository.GetAmountDebts());
             }
 
             this.view.Show();
@@ -235,6 +236,19 @@ namespace DesktopAppGimnasio.Presenters
 
 
         // Other methods
+        private void SearchCoincidence(object? sender, EventArgs e)
+        {
+            String nombreYApellido = repositoryS.GetCompleteName(view.CodigoSocio);
+
+            if (!String.IsNullOrEmpty(nombreYApellido))
+            {
+                view.NombreYApellidoSocio = nombreYApellido;
+                return;
+            }
+
+            view.NombreYApellidoSocio = "Sin coincidencias";
+        }
+
         private DateTime CalculateFechaDeVencimiento(int idTipoCuota, DateTime fechaDePago) 
         {
             DateTime calculatedFechaDeVencimiento =  new DateTime();

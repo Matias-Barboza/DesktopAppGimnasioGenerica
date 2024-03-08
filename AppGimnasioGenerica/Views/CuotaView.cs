@@ -20,6 +20,7 @@
 
         public int CodigoCuota { get => (textBoxCodigoCuota.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoCuota.Text); set => textBoxCodigoCuota.Text = (value == 0) ? String.Empty : value.ToString(); }
         public int CodigoSocio { get => (textBoxCodigoSocio.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoSocio.Text); set => textBoxCodigoSocio.Text = (value == 0) ? String.Empty : value.ToString(); }
+        public String NombreYApellidoSocio { get => textBoxNombreCompleto.Text; set => textBoxNombreCompleto.Text = value; }
         public DateTime FechaDePago { get => monthCalendarFechaPago.SelectionStart; set => monthCalendarFechaPago.SetDate(value); }
         public DateTime FechaDeVencimiento { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string MesQueAbona { get => ConvertIntToMonth(monthCalendarFechaPago.SelectionStart.Month); set => MesQueAbona = value; }
@@ -49,6 +50,7 @@
         public event EventHandler RefreshDebtsDataGridView;
 
         public event EventHandler RefreshCuotasQuickNotification;
+        public event EventHandler SearchCoincidence;
 
         public void SetCuotasBindingSource(BindingSource cuotasList)
         {
@@ -60,7 +62,7 @@
             dataGridViewCuotasVencidas.DataSource = cuotasList;
         }
 
-        public Form GetMdiContainer() 
+        public Form GetMdiContainer()
         {
             return this.MdiParent;
         }
@@ -77,14 +79,14 @@
 
         public void ShowDebtsMessage(int count)
         {
-            if (count == 0) 
+            if (count == 0)
             {
                 return;
             }
-            
+
             DialogResult result = MessageBox.Show($"Existen {count} cuotas vencidas. Revisar por favor.\n¿Desea seguir viendo este mensaje?", "Alerta de cuotas vencidas", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if (result == DialogResult.No) 
+            if (result == DialogResult.No)
             {
                 MustShowDebtsMessage = false;
             }
@@ -155,7 +157,7 @@
             EditEvent?.Invoke(this, EventArgs.Empty);
             labelOperation.Text = "Operación actual: Editar cuota";
             tabControl.SelectedTab = tabPageAddOrEditCuota;
-            
+
             buttonAddCuota.Enabled = false;
             buttonSaveCuota.Enabled = true;
         }
@@ -208,9 +210,20 @@
             CancelEvent?.Invoke(this, EventArgs.Empty);
             labelOperation.Text = "Operación actual:";
 
-             buttonAddCuota.Enabled = true;
-             buttonSaveCuota.Enabled = false;
+            buttonAddCuota.Enabled = true;
+            buttonSaveCuota.Enabled = false;
         }
+
+        private void textBoxCodigoSocio_TextChanged(object sender, EventArgs e)
+        {
+            SearchCoincidence?.Invoke(this, EventArgs.Empty);
+
+            if (textBoxCodigoSocio.Text == "") 
+            {
+                textBoxNombreCompleto.Text = string.Empty;
+            }
+        }
+
         private void comboBoxTipoCuota_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxTipoCuota.SelectedIndex == 0)

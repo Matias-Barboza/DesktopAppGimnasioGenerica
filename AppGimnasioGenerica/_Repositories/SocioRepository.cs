@@ -170,9 +170,9 @@ namespace DesktopAppGimnasio._Repositories
             }
         }
 
-        public int GetCountInactiveSocios()
+        public int GetAmountInactiveSocios()
         {
-            int count = 0;
+            int amount = 0;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -186,11 +186,40 @@ namespace DesktopAppGimnasio._Repositories
                                             WHERE esta_activo = 0";
 
 
-                    count = (int) command.ExecuteScalar();
+                    amount = (int) command.ExecuteScalar();
                 }
             }
 
-            return count;
+            return amount;
+        }
+
+        public String GetCompleteName(int codigoSocio) 
+        {
+            String completeName = "";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"SELECT CONCAT( nombre, ' ', apellido)
+                                            FROM socios
+                                            WHERE codigo_socio = @codigoSocio";
+                    command.Parameters.Add(new SqlParameter()
+                    {
+                        ParameterName = "codigoSocio",
+                        SqlDbType = SqlDbType.Int,
+                        Value = codigoSocio
+                    });
+
+
+                    completeName = (String) command.ExecuteScalar();
+                }
+            }
+
+            return completeName;
         }
 
         public IEnumerable<SocioModel> GetAll()

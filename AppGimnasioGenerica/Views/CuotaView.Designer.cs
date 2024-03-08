@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CuotaView));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             tabControl = new TabControl();
             tabPageDebtorsVisualizer = new TabPage();
             buttonSearchDebt = new Button();
@@ -47,6 +47,8 @@
             textBoxSearchCuota = new TextBox();
             dataGridViewCuotas = new DataGridView();
             tabPageAddOrEditCuota = new TabPage();
+            labelNombreCompletoSocio = new Label();
+            textBoxNombreCompleto = new TextBox();
             comboBoxCantidad = new ComboBox();
             labelCantidad = new Label();
             labelPesos = new Label();
@@ -142,15 +144,15 @@
             dataGridViewCuotasVencidas.BackgroundColor = SystemColors.Control;
             dataGridViewCuotasVencidas.BorderStyle = BorderStyle.None;
             dataGridViewCuotasVencidas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Arial Rounded MT Bold", 14.25F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.Padding = new Padding(5, 0, 0, 0);
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewCuotasVencidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = SystemColors.Window;
+            dataGridViewCellStyle7.Font = new Font("Arial Rounded MT Bold", 14.25F);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle7.Padding = new Padding(5, 0, 0, 0);
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridViewCuotasVencidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCuotasVencidas.ColumnHeadersHeight = 70;
             dataGridViewCuotasVencidas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCuotasVencidas.EnableHeadersVisualStyles = false;
@@ -160,23 +162,23 @@
             dataGridViewCuotasVencidas.Name = "dataGridViewCuotasVencidas";
             dataGridViewCuotasVencidas.ReadOnly = true;
             dataGridViewCuotasVencidas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Arial Rounded MT Bold", 13F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViewCuotasVencidas.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Arial Rounded MT Bold", 13F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dataGridViewCuotasVencidas.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewCuotasVencidas.RowHeadersVisible = false;
             dataGridViewCuotasVencidas.RowHeadersWidth = 20;
             dataGridViewCuotasVencidas.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Arial Rounded MT Bold", 12F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCuotasVencidas.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.BackColor = SystemColors.Window;
+            dataGridViewCellStyle9.Font = new Font("Arial Rounded MT Bold", 12F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCuotasVencidas.RowsDefaultCellStyle = dataGridViewCellStyle9;
             dataGridViewCuotasVencidas.RowTemplate.Height = 30;
             dataGridViewCuotasVencidas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewCuotasVencidas.Size = new Size(835, 438);
@@ -278,15 +280,15 @@
             dataGridViewCuotas.BackgroundColor = SystemColors.Control;
             dataGridViewCuotas.BorderStyle = BorderStyle.None;
             dataGridViewCuotas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Arial Rounded MT Bold", 14.25F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.Padding = new Padding(5, 0, 0, 0);
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridViewCuotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = SystemColors.Window;
+            dataGridViewCellStyle10.Font = new Font("Arial Rounded MT Bold", 14.25F);
+            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle10.Padding = new Padding(5, 0, 0, 0);
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dataGridViewCuotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dataGridViewCuotas.ColumnHeadersHeight = 30;
             dataGridViewCuotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCuotas.EnableHeadersVisualStyles = false;
@@ -296,25 +298,25 @@
             dataGridViewCuotas.Name = "dataGridViewCuotas";
             dataGridViewCuotas.ReadOnly = true;
             dataGridViewCuotas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Arial Rounded MT Bold", 12F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridViewCuotas.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = SystemColors.Window;
+            dataGridViewCellStyle11.Font = new Font("Arial Rounded MT Bold", 12F);
+            dataGridViewCellStyle11.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            dataGridViewCuotas.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dataGridViewCuotas.RowHeadersVisible = false;
             dataGridViewCuotas.RowHeadersWidth = 20;
             dataGridViewCuotas.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Arial Rounded MT Bold", 12F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.NullValue = null;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCuotas.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = SystemColors.Window;
+            dataGridViewCellStyle12.Font = new Font("Arial Rounded MT Bold", 12F);
+            dataGridViewCellStyle12.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle12.NullValue = null;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCuotas.RowsDefaultCellStyle = dataGridViewCellStyle12;
             dataGridViewCuotas.RowTemplate.Height = 30;
             dataGridViewCuotas.RowTemplate.Resizable = DataGridViewTriState.False;
             dataGridViewCuotas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -324,6 +326,8 @@
             // 
             // tabPageAddOrEditCuota
             // 
+            tabPageAddOrEditCuota.Controls.Add(labelNombreCompletoSocio);
+            tabPageAddOrEditCuota.Controls.Add(textBoxNombreCompleto);
             tabPageAddOrEditCuota.Controls.Add(comboBoxCantidad);
             tabPageAddOrEditCuota.Controls.Add(labelCantidad);
             tabPageAddOrEditCuota.Controls.Add(labelPesos);
@@ -348,6 +352,29 @@
             tabPageAddOrEditCuota.TabIndex = 1;
             tabPageAddOrEditCuota.Text = "Registrar/Editar cuota";
             // 
+            // labelNombreCompletoSocio
+            // 
+            labelNombreCompletoSocio.AutoSize = true;
+            labelNombreCompletoSocio.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
+            labelNombreCompletoSocio.ForeColor = SystemColors.ControlText;
+            labelNombreCompletoSocio.Location = new Point(22, 220);
+            labelNombreCompletoSocio.Name = "labelNombreCompletoSocio";
+            labelNombreCompletoSocio.Size = new Size(243, 23);
+            labelNombreCompletoSocio.TabIndex = 37;
+            labelNombreCompletoSocio.Text = "Nombre y apellido socio:";
+            // 
+            // textBoxNombreCompleto
+            // 
+            textBoxNombreCompleto.BorderStyle = BorderStyle.FixedSingle;
+            textBoxNombreCompleto.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+            textBoxNombreCompleto.ForeColor = SystemColors.ControlText;
+            textBoxNombreCompleto.Location = new Point(22, 247);
+            textBoxNombreCompleto.Name = "textBoxNombreCompleto";
+            textBoxNombreCompleto.ReadOnly = true;
+            textBoxNombreCompleto.Size = new Size(238, 27);
+            textBoxNombreCompleto.TabIndex = 36;
+            textBoxNombreCompleto.TabStop = false;
+            // 
             // comboBoxCantidad
             // 
             comboBoxCantidad.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -357,7 +384,7 @@
             comboBoxCantidad.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             comboBoxCantidad.ForeColor = SystemColors.ControlText;
             comboBoxCantidad.FormattingEnabled = true;
-            comboBoxCantidad.Location = new Point(581, 111);
+            comboBoxCantidad.Location = new Point(579, 179);
             comboBoxCantidad.Name = "comboBoxCantidad";
             comboBoxCantidad.Size = new Size(238, 27);
             comboBoxCantidad.TabIndex = 3;
@@ -369,7 +396,7 @@
             labelCantidad.AutoSize = true;
             labelCantidad.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
             labelCantidad.ForeColor = SystemColors.ControlText;
-            labelCantidad.Location = new Point(581, 84);
+            labelCantidad.Location = new Point(579, 152);
             labelCantidad.Name = "labelCantidad";
             labelCantidad.Size = new Size(139, 23);
             labelCantidad.TabIndex = 35;
@@ -381,7 +408,7 @@
             labelPesos.AutoSize = true;
             labelPesos.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
             labelPesos.ForeColor = SystemColors.ControlText;
-            labelPesos.Location = new Point(798, 181);
+            labelPesos.Location = new Point(796, 249);
             labelPesos.Name = "labelPesos";
             labelPesos.Size = new Size(21, 23);
             labelPesos.TabIndex = 33;
@@ -416,7 +443,7 @@
             labelTipoCuota.AutoSize = true;
             labelTipoCuota.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
             labelTipoCuota.ForeColor = SystemColors.ControlText;
-            labelTipoCuota.Location = new Point(22, 220);
+            labelTipoCuota.Location = new Point(579, 84);
             labelTipoCuota.Name = "labelTipoCuota";
             labelTipoCuota.Size = new Size(142, 23);
             labelTipoCuota.TabIndex = 30;
@@ -431,7 +458,7 @@
             comboBoxTipoCuota.ForeColor = SystemColors.ControlText;
             comboBoxTipoCuota.FormattingEnabled = true;
             comboBoxTipoCuota.Items.AddRange(new object[] { "Seleccione una opción", "Mensual", "Semanal", "Diaria" });
-            comboBoxTipoCuota.Location = new Point(22, 246);
+            comboBoxTipoCuota.Location = new Point(579, 110);
             comboBoxTipoCuota.Name = "comboBoxTipoCuota";
             comboBoxTipoCuota.Size = new Size(238, 27);
             comboBoxTipoCuota.TabIndex = 2;
@@ -480,6 +507,7 @@
             textBoxCodigoSocio.Name = "textBoxCodigoSocio";
             textBoxCodigoSocio.Size = new Size(238, 27);
             textBoxCodigoSocio.TabIndex = 0;
+            textBoxCodigoSocio.TextChanged += textBoxCodigoSocio_TextChanged;
             // 
             // buttonCancelOperation
             // 
@@ -562,7 +590,7 @@
             labelMonto.AutoSize = true;
             labelMonto.Font = new Font("Century Gothic", 14F, FontStyle.Bold);
             labelMonto.ForeColor = SystemColors.ControlText;
-            labelMonto.Location = new Point(581, 152);
+            labelMonto.Location = new Point(579, 220);
             labelMonto.Name = "labelMonto";
             labelMonto.Size = new Size(164, 23);
             labelMonto.TabIndex = 12;
@@ -574,7 +602,7 @@
             textBoxMonto.BorderStyle = BorderStyle.FixedSingle;
             textBoxMonto.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             textBoxMonto.ForeColor = SystemColors.ControlText;
-            textBoxMonto.Location = new Point(581, 179);
+            textBoxMonto.Location = new Point(578, 247);
             textBoxMonto.Name = "textBoxMonto";
             textBoxMonto.Size = new Size(212, 27);
             textBoxMonto.TabIndex = 4;
@@ -650,5 +678,7 @@
         private Label labelPesos;
         private ComboBox comboBoxCantidad;
         private Label labelCantidad;
+        private Label labelNombreCompletoSocio;
+        private TextBox textBoxNombreCompleto;
     }
 }
