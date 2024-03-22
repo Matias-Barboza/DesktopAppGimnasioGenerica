@@ -61,6 +61,54 @@ namespace DesktopAppGimnasio.Presenters
             this.view.Show();
         }
 
+        public CuotaPresenter(ICuotaView view, ICuotaRepository repository, ISocioRepository repositoryS, ITipoCuotaRepository repositoryTC, int startTabIndex)
+        {
+
+            this.view = view;
+            this.repository = repository;
+            this.repositoryS = repositoryS;
+            this.repositoryTC = repositoryTC;
+            this.cuotasBindingSource = new BindingSource();
+            this.cuotasVencidasBindingSource = new BindingSource();
+
+
+            // Subscribe to Events
+            this.view.SearchEvent += SearchCuota;
+            this.view.SearchDebtsEvent += SearchDebtCuota;
+            this.view.AddNewEvent += AddNewCuota;
+            this.view.EditEvent += LoadSelectedCuotaToEdit;
+            this.view.DeleteEvent += DeleteSelectedCuota;
+            this.view.SaveEvent += SaveCuota;
+            this.view.CancelEvent += CancelAction;
+            this.view.GetAmountsEvent += GetAmounts;
+            this.view.RefreshDataGridView += RefreshDataGridView;
+            this.view.RefreshDebtsDataGridView += RefreshDebtsDataGridView;
+            this.view.RefreshCuotasQuickNotification += RefreshCuotasQuickNotification;
+            this.view.SearchCoincidence += SearchCoincidence;
+
+            this.view.SetCuotasBindingSource(cuotasBindingSource);
+            this.view.SetCuotasVencidasBindingSource(cuotasVencidasBindingSource);
+
+            this.view.SetStartTab(startTabIndex);
+
+            LoadAllCuotasList();
+            LoadAllCuotasVencidasList();
+            this.view.Amounts = GetAllQuotesAmount();
+
+            this.view.HideColumn(9);
+            this.view.HideDebtsDataGridColumn(4);
+            this.view.HideDebtsDataGridColumn(7);
+            this.view.HideDebtsDataGridColumn(8);
+            this.view.HideDebtsDataGridColumn(9);
+
+            if (view.MustShowDebtsMessage)
+            {
+                view.ShowDebtsMessage(repository.GetAmountDebts());
+            }
+
+            this.view.Show();
+        }
+
         // Common methods
         private void LoadAllCuotasList()
         {

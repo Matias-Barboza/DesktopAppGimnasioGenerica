@@ -16,7 +16,10 @@
 
         //public event EventHandler ShowPresentationView;
         public event EventHandler ShowSociosView;
+        public event EventHandler ShowInactiveSociosView;
         public event EventHandler ShowCuotasView;
+        public event EventHandler ShowCuotasVencidasView;
+        public event EventHandler ShowCuotasAVencerseView;
         public event EventHandler ShowTiposCuotasView;
         public event EventHandler ShowAboutView;
 
@@ -35,9 +38,24 @@
             ShowSociosView?.Invoke(this, EventArgs.Empty);
         }
 
+        private void buttonSociosInactivos_MouseClick(object sender, MouseEventArgs e)
+        {
+            ShowInactiveSociosView?.Invoke(this, EventArgs.Empty);
+        }
+
         private void buttonCuotas_MouseClick(object sender, MouseEventArgs e)
         {
             ShowCuotasView?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void buttonCuotasImpagas_MouseClick(object sender, MouseEventArgs e)
+        {
+            ShowCuotasVencidasView?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void buttonProximasCuotasImpagas_MouseClick(object sender, MouseEventArgs e)
+        {
+            ShowCuotasAVencerseView?.Invoke(this, EventArgs.Empty);
         }
 
         private void buttonTiposCuotas_MouseClick(object sender, MouseEventArgs e)
@@ -151,6 +169,5 @@
         {
             RefreshCuotasAVencerseQuickNotification?.Invoke(this, EventArgs.Empty);
         }
-
     }
 }

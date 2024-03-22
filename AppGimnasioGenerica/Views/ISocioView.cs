@@ -32,6 +32,8 @@
         // Methods
         void SetSocioListBindindSource(BindingSource socioList);
 
+        void SetStartTab(int index);
+
         Form GetMdiContainer();
 
         void Show();

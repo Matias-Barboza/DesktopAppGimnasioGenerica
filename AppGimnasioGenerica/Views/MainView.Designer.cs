@@ -140,6 +140,7 @@
             buttonProximasCuotasImpagas.TextAlign = ContentAlignment.MiddleRight;
             toolTip.SetToolTip(buttonProximasCuotasImpagas, "Cantidad de cuotas próximas a vencerse.");
             buttonProximasCuotasImpagas.UseVisualStyleBackColor = false;
+            buttonProximasCuotasImpagas.MouseClick += buttonProximasCuotasImpagas_MouseClick;
             // 
             // buttonCuotasImpagas
             // 
@@ -162,6 +163,7 @@
             buttonCuotasImpagas.TextAlign = ContentAlignment.MiddleRight;
             toolTip.SetToolTip(buttonCuotasImpagas, "Cantidad de cuotas vencidas.");
             buttonCuotasImpagas.UseVisualStyleBackColor = false;
+            buttonCuotasImpagas.MouseClick += buttonCuotasImpagas_MouseClick;
             // 
             // buttonSociosInactivos
             // 
@@ -184,6 +186,7 @@
             buttonSociosInactivos.TextAlign = ContentAlignment.MiddleRight;
             toolTip.SetToolTip(buttonSociosInactivos, "Cantidad de socios inactivos.");
             buttonSociosInactivos.UseVisualStyleBackColor = false;
+            buttonSociosInactivos.MouseClick += buttonSociosInactivos_MouseClick;
             // 
             // label1
             // 

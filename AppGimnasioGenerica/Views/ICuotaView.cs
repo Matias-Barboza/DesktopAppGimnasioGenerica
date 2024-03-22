@@ -40,18 +40,20 @@
 
         event EventHandler SearchCoincidence;
 
-        public void SetCuotasBindingSource(BindingSource cuotasList);
+        void SetCuotasBindingSource(BindingSource cuotasList);
 
-        public void SetCuotasVencidasBindingSource(BindingSource cuotasVencidasList);
+        void SetCuotasVencidasBindingSource(BindingSource cuotasVencidasList);
+
+        void SetStartTab(int index);
 
         Form GetMdiContainer();
 
-        public void HideColumn(int index);
+        void HideColumn(int index);
 
-        public void HideDebtsDataGridColumn(int index);
+        void HideDebtsDataGridColumn(int index);
 
-        public void ShowDebtsMessage(int count);
+        void ShowDebtsMessage(int count);
 
-        public void Show();
+        void Show();
     }
 }

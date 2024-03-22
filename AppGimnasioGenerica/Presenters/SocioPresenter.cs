@@ -38,6 +38,34 @@ namespace DesktopAppGimnasio.Presenters
             this.view.Show();
         }
 
+        public SocioPresenter(ISocioView view, ISocioRepository repository, ICuotaRepository repositoryC, int startTabIndex)
+        {
+
+            this.view = view;
+            this.repository = repository;
+            this.repositoryC = repositoryC;
+            this.sociosBindingsource = new BindingSource();
+
+            // Subscribe to Events
+            this.view.SearchEvent += SearchSocio;
+            this.view.AddNewEvent += AddNewSocio;
+            this.view.EditEvent += LoadSelectedSocioToEdit;
+            this.view.DeleteEvent += DeleteSelectedSocio;
+            this.view.SaveEvent += SaveSocio;
+            this.view.CancelEvent += CancelAction;
+
+            this.view.RefreshDataGridView += RefreshDataGridView;
+            this.view.RefreshSociosQuickNotification += RefreshSociosQuickNotification;
+
+            this.view.SetStartTab(startTabIndex);
+
+            this.view.SetSocioListBindindSource(sociosBindingsource);
+
+            LoadAllSocioList();
+
+            this.view.Show();
+        }
+
 
         //Common methods
         private void LoadAllSocioList()

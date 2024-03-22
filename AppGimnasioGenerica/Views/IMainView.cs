@@ -8,7 +8,10 @@
 
         //event EventHandler ShowPresentationView;
         event EventHandler ShowSociosView;
+        event EventHandler ShowInactiveSociosView;
         event EventHandler ShowCuotasView;
+        event EventHandler ShowCuotasVencidasView;
+        event EventHandler ShowCuotasAVencerseView;
         event EventHandler ShowTiposCuotasView;
         event EventHandler ShowAboutView;
 

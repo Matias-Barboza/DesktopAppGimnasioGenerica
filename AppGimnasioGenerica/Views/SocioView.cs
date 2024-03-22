@@ -42,6 +42,11 @@
             dataGridViewSocios.DataSource = sociosList;
         }
 
+        public void SetStartTab(int index)
+        {
+            tabControl.SelectTab(index);
+        }
+
         public Form GetMdiContainer() 
         {
             return this.MdiParent;
